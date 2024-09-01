@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Colorido de Efectos y Animaciones CSS</title>
+    <style>
+        /* Reseteo de márgenes y padding para el cuerpo */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        /* Estilo general para el contenedor */
+        .container {
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Estilo para el texto con transformación 2D */
+        .text-section {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid #4a90e2;
+            border-radius: 12px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #333;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(0,0,0,0.2));
+            transition: transform 0.4s ease;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+        }
+
+        .text-section:hover {
+            transform: translateY(-10px) rotate(-2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .text-section:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Estilo para la imagen con transformación 3D */
+        .image-section {
+            width: 80%;
+            max-width: 800px;
+            perspective: 1200px;
+            overflow: hidden;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            border-radius: 12px;
+            border: 4px solid #4a90e2;
+        }
+
+        .image-section:hover img {
+            transform: rotateY(15deg) rotateX(10deg);
+        }
+
+        /* Estilo para los bloques de columnas */
+        .columns-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-around;
+            box-sizing: border-box;
+        }
+
+        .columns-section .column {
+            flex: 1 1 30%;
+            box-sizing: border-box;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #7ed321;
+            border-radius: 12px;
+            color: #333;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .columns-section .column::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .columns-section .column:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .columns-section .column:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Estilo para el bloque de flexbox */
+        .flexbox-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #e9f7f1;
+            border: 2px solid #50e3a4;
+            border-radius: 12px;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .flexbox-section div {
+            flex: 1;
+            background-color: #dff9fb;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            color: #333;
+            transition: transform 0.4s ease, background-color 0.4s ease;
+        }
+
+        .flexbox-section div:hover {
+            transform: translateY(-10px);
+            background-color: #a9cce3;
+        }
+
+        /* Estilo para la animación */
+        .animated-section {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            background-color: #ffffff;
+            color: #333;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.2;
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sección de texto con transformación 2D -->
+        <div class="text-section">
+            <h1>Explora los Efectos Avanzados de CSS</h1>
+            <p>Descubre cómo los efectos de transformación 2D y 3D, junto con animaciones sutiles, pueden mejorar la apariencia y la interacción de tu página web.</p>
+        </div>
+
+        <!-- Sección de imagen con transformación 3D -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1506748686214e9df14a1b0c7d3f2d2d7e4f2c4b2f5e0e" alt="Tecnología y Diseño">
+        </div>
+
+        <!-- Sección de columnas -->
+        <div class="columns-section">
+            <div class="column">
+                <h2>Innovación</h2>
+                <img src="https://images.unsplash.com/photo-1523475499654-b2a16fd0e508" alt="Innovación" style="width: 100%; border-radius: 8px;">
+                <p>Las últimas tendencias en tecnología y diseño.</p>
+            </div>
+            <div class="column">
+                <h2>Creatividad</h2>
+                <img src="https://images.unsplash.com/photo-1541692205005-e68dc758292e" alt="Creatividad" style="width: 100%; border-radius: 8px;">
+                <p>Soluciones creativas para tus proyectos.</p>
+            </div>
+            <div class="column">
+                <h2>Desarrollo</h2>
+                <img src="https://images.unsplash.com/photo-1528723368473-c4a1d39e33b8" alt="Desarrollo" style="width: 100%; border-radius: 8px;">
+                <p>Avances y herramientas para el desarrollo web.</p>
+            </div>
+        </div>
+
+        <!-- Sección de flexbox -->
+        <div class="flexbox-section">
+            <div>
+                <h3>Elemento 1</h3>
+                <p>Información relevante y útil.</p>
+            </div>
+            <div>
+                <h3>Elemento 2</h3>
+                <p>Más contenido interesante aquí.</p>
+            </div>
+            <div>
+                <h3>Elemento 3</h3>
+                <p>Detalles adicionales y recursos.</p>
+            </div>
+        </div>
+
+        <!-- Sección con animación -->
+        <div class="animated-section">
+            <h2>Sección con Animación de Desvanecimiento</h2>
+            <p>Esta sección está animada para crear un efecto de desvanecimiento suave que resalta el contenido.</p>
+        </div>
+    </div>
+</body>
+</html>
